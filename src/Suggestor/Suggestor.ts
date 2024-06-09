@@ -124,18 +124,6 @@ function addTaskPropertySuggestions(
             appendText: `${symbols.scheduledDateSymbol} `,
         });
 
-    if (!line.includes(symbols.idSymbol))
-        genericSuggestions.push({
-            displayText: `${symbols.idSymbol} Task ID`,
-            appendText: `${symbols.idSymbol}`,
-        });
-
-    if (!line.includes(symbols.dependsOnSymbol))
-        genericSuggestions.push({
-            displayText: `${symbols.dependsOnSymbol} Task depends on ID`,
-            appendText: `${symbols.dependsOnSymbol}`,
-        });
-
     if (!hasPriority(line)) {
         const prioritySymbols: { [key: string]: string } = symbols.prioritySymbols;
         const priorityTexts = ['High', 'Medium', 'Low', 'Highest', 'Lowest'];
@@ -170,6 +158,18 @@ function addTaskPropertySuggestions(
             insertSkip: dataviewMode ? insertSkip : undefined,
         });
     }
+
+    if (!line.includes(symbols.idSymbol))
+        genericSuggestions.push({
+            displayText: `${symbols.idSymbol} Task ID`,
+            appendText: `${symbols.idSymbol}`,
+        });
+
+    if (!line.includes(symbols.dependsOnSymbol))
+        genericSuggestions.push({
+            displayText: `${symbols.dependsOnSymbol} Task depends on ID`,
+            appendText: `${symbols.dependsOnSymbol}`,
+        });
 
     // We now filter the general suggestions according to the word at the cursor. If there's
     // something to match, we filter the suggestions accordingly, so the user can get more specific
